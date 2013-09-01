@@ -85,7 +85,7 @@ namespace Dynamo.Template.Core
 
 					_state = State.None;
 				}
-				else if (Char.IsControl(CurrentChar()))	// IsCurrent('\n') || IsCurrent('\r') || IsCurrent('\t'))
+				else if (Char.IsControl(CurrentChar()))
 				{
 					// Skip
 				}
@@ -106,7 +106,7 @@ namespace Dynamo.Template.Core
 				AppendTextAssignmentClose();
 			}
 
-			// Throw exception if State is Script-Print/Block and it was never closed?
+			// Throw CompileException if State is Script-Print/Block and it was never closed?
 
 			_state = State.None;
 

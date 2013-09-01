@@ -7,6 +7,7 @@ using System.Web.WebPages;
 // Use the framework Cache feature instead of creating my own - make it configurable?
 // Get vs Compile as method name ?
 // Method that automatically wraps in a Script tag ? GetWithScript(Tag) / GetInScript / GetWrappedInScript?
+// Is it a problem that static class is named Template which is the same as the Namespace - might cause some confusion (Dynamo.Template.Template...)
 
 namespace Dynamo.Template
 {

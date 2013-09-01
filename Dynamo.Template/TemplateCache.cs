@@ -3,6 +3,8 @@ using System.Collections.Concurrent;
 
 // Store all compiled sources as MvcHtmlString and return MvcHtmlString instead?
 
+// Take a CompilerFactory (Func<ICompiler>) that is used to create Compiler instance
+
 namespace Dynamo.Template
 {
 	public class TemplateCache : ITemplateCache
