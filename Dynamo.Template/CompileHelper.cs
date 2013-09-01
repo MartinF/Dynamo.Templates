@@ -9,7 +9,7 @@ namespace Dynamo.Template
 	{
 		public static String CompileTemplate(String templateName, String source)
 		{
-			return new TemplateCompiler(templateName, source).Compile().ToString();
+			return new MinifiedTemplateCompiler(templateName, source).Compile().ToString();
 		}
 
 		public static String CompileTemplate(String templateName, Func<String> sourceFactory)
