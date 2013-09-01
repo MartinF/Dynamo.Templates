@@ -22,7 +22,7 @@ In this example a template is declared in a razor view using a helper.
 The template is loaded using the @Template.Get(() => MessageTemplate()) method call which outputs the compiled template to the view.
 
 The compiled template will be available as a JavaScript method with the same name (MessageTemplate - there are several overloads of the Get method if you wish to use a different name), that can be used by passing in the model data as a parameter (var result = MessageTemplate(model);).
-``` HTML
+```HTML
 @helper MessageTemplate()
 {
 	<ul>
