@@ -1,5 +1,5 @@
 # Server-side Templates
-Dynamo.Template is a server-side template engine/compiler.
+Dynamo.Templates is a server-side template engine/compiler.
 
 A Template can consist of a mix of HTML and JavaScript. 
 
