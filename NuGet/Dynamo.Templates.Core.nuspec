@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Dynamo.Templates.Core</id>
+        <version>1.0.0</version>
+        <title>Dynamo.Templates.Core</title>
+        <authors>Dynamo</authors>
+        <projectUrl>https://github.com/MartinF/Dynamo.Templates</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Library for generating templates server-side.</description>
+        <summary>Library for generating templates server-side.</summary>
+        <dependencies>
+            <dependency id="AjaxMin" version="4.97.4951.28483" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Dynamo.Templates.Core\bin\Release\Dynamo.Templates.Core.dll" target="lib\Dynamo.Templates.Core.dll" />
+    </files>
+</package>

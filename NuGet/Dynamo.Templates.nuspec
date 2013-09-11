@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Dynamo.Templates</id>
+        <version>1.0.0</version>
+        <title>Dynamo.Templates</title>
+        <authors>Dynamo</authors>
+        <projectUrl>https://github.com/MartinF/Dynamo.Templates</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Library for generating templates server-side.</description>
+        <summary>Library for generating templates server-side.</summary>
+        <tags>template templates server-side view</tags>
+        <dependencies>
+            <dependency id="Microsoft.AspNet.WebPages.Administration" version="2.0.30506.0" />
+            <dependency id="Dynamo.Templates.Core" version="1.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Dynamo.Templates\bin\Release\Dynamo.Templates.dll" target="lib\Dynamo.Templates.dll" />
+    </files>
+</package>
