@@ -1,4 +1,4 @@
-# Server-side Templates
+# Generate Templates Server-side
 Dynamo.Templates is a server-side template engine/compiler.
 
 A Template can consist of a mix of HTML and JavaScript. 
