@@ -9,6 +9,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Library for generating templates server-side.</description>
         <summary>Library for generating templates server-side.</summary>
+        <tags>Dynamo Templates Server-side Template</tags>
         <dependencies>
             <dependency id="AjaxMin" version="4.97.4951.28483" />
         </dependencies>
