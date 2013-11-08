@@ -19,9 +19,9 @@ See the example below for how they are used.
 ## Examples
 In this example a template is declared in a razor view using a helper.
 
-The template is loaded using the @Template.Get(() => MessageTemplate()) method call which outputs the compiled template to the view.
+The template is loaded using the @Template.Get(() => MessageTemplate()) method call which return the compiled template as an anonymous function.
 
-The compiled template will be available as a JavaScript method with the same name (MessageTemplate - there are several overloads of the Get method if you wish to use a different name), that can be used by passing in the model data as a parameter (var result = MessageTemplate(model);).
+The compiled template will in this example be available as a JavaScript function with the name msg_tmpl, that can be used by passing in the model data as a parameter (var result = msg_tmpl(model);).
 ```HTML
 @helper MessageTemplate()
 {
@@ -36,13 +36,13 @@ The compiled template will be available as a JavaScript method with the same nam
 
 <script type="text/javascript">
 	// Outputs the Template
-	@Template.Get(() => MessageTemplate())
+	var msg_tmpl = @Template.Get(() => MessageTemplate())
 	
 	// Model with data for the template
 	var model = { messages:[{username: "User1", message: "Hello"}, {username: "User2", message: "World!"}]};
 	
 	// Get the template result
-	var result = MessageTemplate(model);
+	var result = msg_tmpl(model);
 	
 	// Insert the result
 	document.getElementById("example").innerHTML = result;
