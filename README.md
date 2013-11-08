@@ -19,7 +19,7 @@ See the example below for how they are used.
 ## Examples
 In this example a template is declared in a razor view using a helper.
 
-The template is loaded using the @Template.Get(() => MessageTemplate()) method call which return the compiled template as an anonymous function.
+The template is loaded using the @Template.Get(() => MessageTemplate()) method call which return the compiled template as an anonymous JavaScript function.
 
 The compiled template will in this example be available as a JavaScript function with the name msg_tmpl, that can be used by passing in the model data as a parameter (var result = msg_tmpl(model);).
 ```HTML
