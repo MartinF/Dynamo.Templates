@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-// Store all compiled sources as MvcHtmlString and return MvcHtmlString instead?
-
+// Store all compiled sources as MvcHtmlString and return MvcHtmlString instead? - ties it to Mvc
 // Take a CompilerFactory (Func<ICompiler>) that is used to create Compiler instance
 
 namespace Dynamo.Templates
@@ -13,14 +12,14 @@ namespace Dynamo.Templates
 		private readonly ConcurrentDictionary<String, String> _cache = new ConcurrentDictionary<String, String>();
 
 		// Methods
-		public String GetOrAdd(String templateName, Func<String> sourceFactory)
+		public String GetOrAdd(String key, Func<String> sourceFactory)
 		{
-			if (templateName == null)
-				throw new ArgumentNullException("templateName");
+			if (key == null)
+				throw new ArgumentNullException("key");
 			if (sourceFactory == null)
 				throw new ArgumentNullException("sourceFactory");
 
-			return _cache.GetOrAdd(templateName, (x) => CompileHelper.CompileTemplate(x, sourceFactory));
+			return _cache.GetOrAdd(key, (x) => CompileHelper.CompileTemplate(sourceFactory));	// x is the key
 		}
 	}
 }

@@ -1,25 +1,16 @@
 ﻿using System;
 using System.Text;
 
-// Need to check that templateName in constructor is a valid javascript method name
+// Compiles template as an anonymous function
 
 namespace Dynamo.Templates.Core
 {
 	public class TemplateCompiler : SourceCompiler, ICompiler
 	{
-		private readonly String _templateName;
-
-		public TemplateCompiler(String templateName, String source)
+		public TemplateCompiler(String source)
 			: base(source)
 		{
-			if (String.IsNullOrWhiteSpace(templateName))
-				throw new ArgumentException("Is null or whitespace", "templateName");
-
-			_templateName = templateName;
 		}
-
-		// Properties
-		public String TemplateName { get; set; }
 
 		// Methods
 		public override StringBuilder Compile()
@@ -27,10 +18,10 @@ namespace Dynamo.Templates.Core
 			var sb = base.Compile();
 
 			// function open
-			sb.Insert(0, "function " + _templateName + "(model){");
+			sb.Insert(0, "function (model){");
 			// function close
 			sb.Append("return " + JSVariableName + ";}");
-			
+
 			return sb;
 		}
 	}

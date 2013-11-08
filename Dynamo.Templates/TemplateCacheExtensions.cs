@@ -2,6 +2,8 @@
 using System.Linq.Expressions;
 using System.Web.WebPages;
 
+// Any way to cache expressions and store method name and Func instead of having to get name and create func every time - GetHashCode()?
+
 namespace Dynamo.Templates
 {
 	public static class TemplateCacheExtensions

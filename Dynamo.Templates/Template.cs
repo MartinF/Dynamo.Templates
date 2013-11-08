@@ -3,11 +3,10 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.WebPages;
 
-// Currently just using simple Singleton implementation
-// Use the framework Cache feature instead of creating my own - make it configurable?
-// Get vs Compile as method name ?
-// Method that automatically wraps in a Script tag ? GetWithScript(Tag) / GetInScript / GetWrappedInScript?
-// Is it a problem that static class is named Template which is the same as the Namespace - might cause some confusion (Dynamo.Template.Template...)
+// Currently just using simple Singleton implementation for the Cache
+	// Make it configurable? Request Mvc DepdencyResolver for interface and if not returned use own default implementation?
+	// Use the framework Caching feature (System.Runtime.Caching.ObjectCache) instead of creating my own
+// Include a way to get by Key without providing the source?
 
 namespace Dynamo.Templates
 {
@@ -20,24 +19,24 @@ namespace Dynamo.Templates
 		public static ITemplateCache Cache { get { return _cache; } }
 
 		// Methods
-		public static IHtmlString Get(String templateName, Func<String> sourceFactory, Boolean debugMode)
+		public static IHtmlString Get(String key, Func<String> sourceFactory, Boolean debugMode)
 		{
 			if (debugMode)
 			{
-				return new HtmlString(CompileHelper.CompileTemplate(templateName, sourceFactory));
+				return new HtmlString(CompileHelper.CompileTemplate(sourceFactory));
 			}
 
-			return new HtmlString(_cache.GetOrAdd(templateName, sourceFactory));
+			return new HtmlString(_cache.GetOrAdd(key, sourceFactory));
 		}
 
-		public static IHtmlString Get(String templateName, Func<HelperResult> sourceFactory, Boolean debugMode)
+		public static IHtmlString Get(String key, Func<HelperResult> sourceFactory, Boolean debugMode)
 		{
 			if (debugMode)
 			{
-				return new HtmlString(CompileHelper.CompileTemplate(templateName, sourceFactory));
+				return new HtmlString(CompileHelper.CompileTemplate(sourceFactory));
 			}
 
-			return new HtmlString(_cache.GetOrAdd(templateName, sourceFactory));
+			return new HtmlString(_cache.GetOrAdd(key, sourceFactory));
 		}
 
 		public static IHtmlString Get(Expression<Func<String>> sourceFactory, Boolean debugMode)
@@ -59,17 +58,17 @@ namespace Dynamo.Templates
 
 			return new HtmlString(_cache.GetOrAdd(sourceFactory));
 		}
-
-		public static IHtmlString Get(String templateName, Func<String> sourceFactory)
+		
+		public static IHtmlString Get(String key, Func<String> sourceFactory)
 		{
 			var debugMode = IsDebuggingEnabled();
-			return Get(templateName, sourceFactory, debugMode);
+			return Get(key, sourceFactory, debugMode);
 		}
 
-		public static IHtmlString Get(String templateName, Func<HelperResult> sourceFactory)
+		public static IHtmlString Get(String key, Func<HelperResult> sourceFactory)
 		{
 			var debugMode = IsDebuggingEnabled();
-			return Get(templateName, sourceFactory, debugMode);
+			return Get(key, sourceFactory, debugMode);
 		}
 
 		public static IHtmlString Get(Expression<Func<String>> sourceFactory)

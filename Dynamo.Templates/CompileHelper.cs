@@ -7,31 +7,30 @@ namespace Dynamo.Templates
 {
 	internal static class CompileHelper
 	{
-		public static String CompileTemplate(String templateName, String source)
+		public static String CompileTemplate(String source)
 		{
-			return new MinifiedTemplateCompiler(templateName, source).Compile().ToString();
+			// Default impl.
+			return new MinifierCompiler<TemplateCompiler>(new TemplateCompiler(source)).Compile().ToString();
 		}
 
-		public static String CompileTemplate(String templateName, Func<String> sourceFactory)
+		public static String CompileTemplate(Func<String> sourceFactory)
 		{
-			return CompileTemplate(templateName, sourceFactory());
+			return CompileTemplate(sourceFactory());
 		}
 
-		public static String CompileTemplate(String templateName, Func<HelperResult> sourceFactory)
+		public static String CompileTemplate(Func<HelperResult> sourceFactory)
 		{
-			return CompileTemplate(templateName, sourceFactory().ToString());
+			return CompileTemplate(sourceFactory().ToString());
 		}
 
 		public static String CompileTemplate(Expression<Func<String>> sourceFactory)
 		{
-			var templateName = ExpressionHelper.GetMethodInfo(sourceFactory).Name;
-			return CompileTemplate(templateName, sourceFactory.Compile()());
+			return CompileTemplate(sourceFactory.Compile()());
 		}
 
 		public static String CompileTemplate(Expression<Func<HelperResult>> sourceFactory)
 		{
-			var templateName = ExpressionHelper.GetMethodInfo(sourceFactory).Name;
-			return CompileTemplate(templateName, sourceFactory.Compile());
+			return CompileTemplate(sourceFactory.Compile());
 		}
 	}
 }

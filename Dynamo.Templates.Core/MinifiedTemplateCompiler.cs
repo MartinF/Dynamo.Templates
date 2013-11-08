@@ -2,22 +2,30 @@
 using System.Text;
 using Microsoft.Ajax.Utilities;
 
+// Just a wrapper around any other compiler that minifies the output of Compile()
+
 // Throw CompileException if any errors?
 
 namespace Dynamo.Templates.Core
 {
-	public class MinifiedTemplateCompiler : TemplateCompiler
+	public class MinifierCompiler<TCompiler> : ICompiler
+		where TCompiler : class, ICompiler
 	{
 		private readonly CodeSettings _settings = new CodeSettings() { OutputMode = OutputMode.SingleLine };
 
-		public MinifiedTemplateCompiler(String templateName, String source)
-			: base(templateName, source)
+		public MinifierCompiler(TCompiler compiler)
 		{
+			if (compiler == null)
+				throw new ArgumentNullException("compiler");
+
+			InnerCompiler = compiler;
 		}
 
-		public override StringBuilder Compile()
+		public ICompiler InnerCompiler { get; set; }
+
+		public StringBuilder Compile()
 		{
-			var compiledTemplate = base.Compile().ToString();
+			var compiledTemplate = InnerCompiler.Compile().ToString();
 
 			var minifier = new Minifier();
 			var minifiedTemplate = minifier.MinifyJavaScript(compiledTemplate, _settings);

@@ -4,6 +4,6 @@ namespace Dynamo.Templates
 {
 	public interface ITemplateCache
 	{
-		String GetOrAdd(String templateName, Func<String> sourceFactory);
+		String GetOrAdd(String key, Func<String> sourceFactory);
 	}
 }
