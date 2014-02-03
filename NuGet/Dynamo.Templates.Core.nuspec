@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Dynamo.Templates.Core</id>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
         <title>Dynamo.Templates.Core</title>
         <authors>Dynamo</authors>
         <projectUrl>https://github.com/MartinF/Dynamo.Templates</projectUrl>
@@ -11,7 +11,7 @@
         <summary>Library for generating templates server-side.</summary>
         <tags>Dynamo Templates Server-side Template</tags>
         <dependencies>
-            <dependency id="AjaxMin" version="4.97.4951.28483" />
+            <dependency id="AjaxMin" version="5.7.5124.21499" />
         </dependencies>
     </metadata>
     <files>
